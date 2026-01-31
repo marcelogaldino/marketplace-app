@@ -12,7 +12,7 @@ const baseURL = getBaseURL();
 
 export class MarketPlaceApiClient {
   private instance: AxiosInstance;
-  private isRefeeshing = false;
+  private isRefreshing = false;
 
   constructor() {
     this.instance = axios.create({

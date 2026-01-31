@@ -7,12 +7,11 @@ export const useRegisterMutation = () => {
     mutationFn: (userData: RegisterHttpParams) =>
       authService.register(userData),
     onSuccess: (response) => {
-      console.log(response);
+      console.log("Registration successful:", response);
     },
-    onError: (error) => {
-      console.log(error);
+    onError: (error: any) => {
+      console.error(error);
     },
   });
-
   return mutation;
 };
