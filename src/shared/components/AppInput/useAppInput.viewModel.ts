@@ -45,14 +45,11 @@ export const useAppInputViewModel = ({
   };
 
   const handleFocus = (event: FocusEvent) => {
-    console.log("Focou no input");
     setIsFocused(true);
     onFocus?.(event);
   };
 
   const handleBlur = (event: BlurEvent) => {
-    console.log("Desfocou no input");
-
     setIsFocused(false);
     onBlur?.(event);
   };

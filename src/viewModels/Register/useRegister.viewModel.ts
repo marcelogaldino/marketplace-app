@@ -6,7 +6,7 @@ import { useUserStore } from "../../shared/store/user-store";
 
 export const useRegisterViewModel = () => {
   const userRegisterMutation = useRegisterMutation();
-  const { setSession, user, logout } = useUserStore();
+  const { setSession, logout } = useUserStore();
 
   const {
     control,
@@ -34,8 +34,6 @@ export const useRegisterViewModel = () => {
       user: mutationResponse.user,
     });
   });
-
-  console.log(user);
 
   return {
     control,
