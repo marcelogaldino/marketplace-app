@@ -1,14 +1,14 @@
-import type { ReactNode } from 'react';
-import { Keyboard, TouchableWithoutFeedback } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import type { ReactNode } from "react";
+import { Keyboard, TouchableWithoutFeedback } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 type DismissKeyboardViewProps = {
   children: ReactNode;
 };
 
 export const KeyboardContainer = ({ children }: DismissKeyboardViewProps) => (
-  <SafeAreaView>
+  <SafeAreaView className="flex-1">
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <KeyboardAwareScrollView
         showsVerticalScrollIndicator={false}
