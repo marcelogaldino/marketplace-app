@@ -1,12 +1,25 @@
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { RegisterFormData, registerScheme } from "./register.scheme";
 import { useRegisterMutation } from "../../shared/queries/auth/useRegister.mutation";
 import { useUserStore } from "../../shared/store/user-store";
+import { useImage } from "../../shared/components/hooks/useImage";
+import { useState } from "react";
+import { CameraType } from "expo-image-picker";
+import { useUploadAvatarMutation } from "../../shared/queries/auth/useUploadAvatar.mutation";
 
 export const useRegisterViewModel = () => {
-  const userRegisterMutation = useRegisterMutation();
-  const { setSession, logout } = useUserStore();
+  const { logout, updateUser } = useUserStore();
+  const [avatarUri, setAvatarUri] = useState<string | null>();
+
+  const { handleSelectImage } = useImage({
+    callback: setAvatarUri,
+    cameraType: CameraType.front,
+  });
+
+  const handleSelectAvatar = () => {
+    handleSelectImage();
+  };
 
   const {
     control,
@@ -23,16 +36,23 @@ export const useRegisterViewModel = () => {
     },
   });
 
+  const uploadAvatarMutation = useUploadAvatarMutation();
+
+  const userRegisterMutation = useRegisterMutation({
+    onSuccess: async () => {
+      if (avatarUri) {
+        const { url } = await uploadAvatarMutation.mutateAsync(avatarUri);
+        console.log(url);
+
+        updateUser({ avatarUrl: url });
+      }
+    },
+  });
+
   const onSubmit = handleSubmit(async (userData) => {
     const { confirmPassword, ...registerData } = userData;
 
-    const mutationResponse =
-      await userRegisterMutation.mutateAsync(registerData);
-    setSession({
-      refreshToken: mutationResponse.refreshToken,
-      token: mutationResponse.token,
-      user: mutationResponse.user,
-    });
+    await userRegisterMutation.mutateAsync(registerData);
   });
 
   return {
@@ -40,5 +60,7 @@ export const useRegisterViewModel = () => {
     errors,
     onSubmit,
     logout,
+    handleSelectAvatar,
+    avatarUri,
   };
 };
