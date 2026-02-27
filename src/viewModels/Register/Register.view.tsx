@@ -96,7 +96,7 @@ export const RegisterView: FC<ReturnType<typeof useRegisterViewModel>> = ({
             className="mb-8"
             variant="outlined"
             rightIcon="arrow-forward"
-            onPress={() => router.push("/login")}
+            onPress={() => router.push("(public)/login")}
           >
             Acessar
           </AppButton>
