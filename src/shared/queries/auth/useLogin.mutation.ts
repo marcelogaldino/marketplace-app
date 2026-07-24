@@ -10,7 +10,6 @@ export const useLoginMutation = () => {
     mutationFn: (userData: LoginHttpParams) => authService.login(userData),
     onSuccess: (response) => {
       setSession(response);
-      console.log("Login successful:", response);
     },
     onError: (error: any) => {
       console.error(error);

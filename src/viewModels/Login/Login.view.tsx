@@ -26,6 +26,7 @@ export const LoginView: FC<ReturnType<typeof useLoginViewModel>> = ({
             label="EMAIL"
             leftIcon="mail-outline"
             placeholder="mail@mail.com.br"
+            autoCapitalize="none"
           />
 
           <AppInputController

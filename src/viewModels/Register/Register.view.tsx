@@ -59,6 +59,11 @@ export const RegisterView: FC<ReturnType<typeof useRegisterViewModel>> = ({
             label="EMAIL"
             leftIcon="mail-outline"
             placeholder="mail@mail.com.br"
+            autoComplete="off"
+            autoCorrect={false}
+            spellCheck={false}
+            importantForAutofill="no"
+            autoCapitalize="none"
           />
 
           <AppInputController
