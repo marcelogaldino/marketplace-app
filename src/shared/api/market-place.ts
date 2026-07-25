@@ -32,6 +32,7 @@ export class MarketPlaceApiClient {
     this.instance.interceptors.request.use(
       async (config) => {
         const userData = await AsyncStorage.getItem("marketplace-auth");
+        console.log(userData);
         if (userData) {
           const {
             state: { token },
@@ -69,16 +70,16 @@ export class MarketPlaceApiClient {
             }
 
             const {
-              state: { refresToken },
+              state: { refreshToken },
             } = JSON.parse(userData);
 
-            if (!refresToken) {
+            if (!refreshToken) {
               throw new Error("Refresh token não encontrado");
             }
 
             const { data: response } = await this.instance.post(
               "/auth/refresh",
-              { refresToken },
+              { refreshToken },
             );
 
             const currentUserData = JSON.parse(userData);

@@ -1,5 +1,7 @@
 import { Redirect, Stack } from "expo-router";
+import { View } from "react-native";
 import { useUserStore } from "../../shared/store/user-store";
+import { AppBottomSheet } from "../../shared/components/AppBottomSheet";
 
 export default function PrivateRootLayout() {
   const { user, token } = useUserStore();
@@ -8,8 +10,11 @@ export default function PrivateRootLayout() {
     return <Redirect href={"/(public)/login"} />;
   }
   return (
-    <Stack>
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-    </Stack>
+    <View className="flex-1">
+      <Stack>
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      </Stack>
+      <AppBottomSheet />
+    </View>
   );
 }
