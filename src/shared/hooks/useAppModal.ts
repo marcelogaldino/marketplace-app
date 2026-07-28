@@ -1,7 +1,10 @@
 import { Ionicons } from "@expo/vector-icons";
-import { useModalStore } from "../../store/modal-store";
 import { createElement } from "react";
-import { SelectionModal, SelectionModalProps } from "../Modals/SelectionModal";
+import {
+  SelectionModal,
+  SelectionModalProps,
+} from "../components/Modals/SelectionModal";
+import { useModalStore } from "../store/modal-store";
 
 export interface SelectionOption {
   text: string;

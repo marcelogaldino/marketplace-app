@@ -3,10 +3,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { RegisterFormData, registerScheme } from "./register.scheme";
 import { useRegisterMutation } from "../../shared/queries/auth/useRegister.mutation";
 import { useUserStore } from "../../shared/store/user-store";
-import { useImage } from "../../shared/components/hooks/useImage";
 import { useState } from "react";
 import { CameraType } from "expo-image-picker";
 import { useUploadAvatarMutation } from "../../shared/queries/auth/useUploadAvatar.mutation";
+import { useImage } from "../../shared/hooks/useImage";
 
 export const useRegisterViewModel = () => {
   const { logout, updateUser } = useUserStore();

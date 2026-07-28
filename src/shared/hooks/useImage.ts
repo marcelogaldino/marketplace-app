@@ -2,7 +2,7 @@ import { ImagePickerOptions } from "expo-image-picker";
 import { useAppModal } from "./useAppModal";
 import { useCamera } from "./useCamera";
 import { useGallery } from "./useGallery";
-import { useModalStore } from "../../store/modal-store";
+import { useModalStore } from "../store/modal-store";
 
 interface UseImageParams extends ImagePickerOptions {
   callback: (uri: string | null) => void;

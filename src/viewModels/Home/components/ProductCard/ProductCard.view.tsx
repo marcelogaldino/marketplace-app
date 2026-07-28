@@ -3,6 +3,7 @@ import { FC } from "react";
 import { useProductCardViewModel } from "./useProductCard.viewModel";
 import { Ionicons } from "@expo/vector-icons";
 import { colors } from "../../../../styles/colors";
+import { AppPriceText } from "../../../../shared/components/AppPriceText";
 
 export const ProductCardView: FC<
   ReturnType<typeof useProductCardViewModel>
@@ -25,7 +26,11 @@ export const ProductCardView: FC<
           {displayName}
         </Text>
         <View className="flex-row items-center justify-between">
-          <Text>R$ {product.value}</Text>
+          <AppPriceText
+            classNameCurrency="text-small"
+            classNameValue="text-lg font-bold flex-1"
+            value={Number(product.value)}
+          />
         </View>
       </View>
     </TouchableOpacity>
