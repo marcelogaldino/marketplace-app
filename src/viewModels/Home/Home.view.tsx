@@ -1,18 +1,18 @@
 import { FlatList, RefreshControl } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { HomeHeader } from "./components/HomeHeader";
-import { SearchInput } from "./components/Searchinput";
 import { ProductCard } from "./components/ProductCard";
 import { FC } from "react";
 import { useHomeViewModel } from "./useHome.viewModel";
 import { Footer } from "./components/Footer";
 import { colors } from "../../styles/colors";
+import { RenderHeader } from "./components/RenderHeader";
 
 export const HomeView: FC<ReturnType<typeof useHomeViewModel>> = ({
   handleEndReached,
-  handleLoadMore,
   handleRefresh,
+  setSearchInputText,
   isFetchingNextPage,
+  searchInputText,
   isRefetching,
   hasNextPage,
   isLoading,
@@ -31,12 +31,12 @@ export const HomeView: FC<ReturnType<typeof useHomeViewModel>> = ({
             isLoading={hasNextPage && Boolean(isLoading || isFetchingNextPage)}
           />
         }
-        ListHeaderComponent={() => (
-          <>
-            <HomeHeader />
-            <SearchInput />
-          </>
-        )}
+        ListHeaderComponent={
+          <RenderHeader
+            searchInputText={searchInputText}
+            setSearchInputText={setSearchInputText}
+          />
+        }
         renderItem={({ item }) => <ProductCard product={item} />}
         contentContainerClassName="px-[16px] pb-[120px]"
         refreshControl={
