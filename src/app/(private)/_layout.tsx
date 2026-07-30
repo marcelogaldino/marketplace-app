@@ -13,6 +13,7 @@ export default function PrivateRootLayout() {
     <View className="flex-1">
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="product/[id]" options={{ headerShown: false }} />
       </Stack>
       <AppBottomSheet />
     </View>
