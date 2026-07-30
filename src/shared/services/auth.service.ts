@@ -19,8 +19,6 @@ export const login = async (userData: LoginHttpParams) => {
     userData,
   );
 
-  console.log(data);
-
   return data;
 };
 

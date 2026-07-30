@@ -2,9 +2,9 @@ import { useGetProductDetailQuery } from "../../shared/queries/product/useGetPro
 
 export const useProductViewModel = (productId: number) => {
   const {
-    data: productDetail,
+    data: productDetails,
     isLoading,
     error,
   } = useGetProductDetailQuery(productId);
-  return { productDetail, isLoading, error };
+  return { productDetails, isLoading, error };
 };

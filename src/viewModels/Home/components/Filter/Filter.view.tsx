@@ -17,7 +17,6 @@ export const FilterView: FC<ReturnType<typeof useFilterViewModel>> = ({
   handleApplyFilters,
   handleResetFilter,
 }) => {
-  console.log(productsCategories);
   return (
     <View>
       <View className="flex-row items-center justify-between p-4 px-6">
